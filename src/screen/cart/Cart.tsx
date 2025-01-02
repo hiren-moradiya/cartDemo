@@ -83,7 +83,9 @@ export const Cart = () => {
   };
 
   const renderCartItem = ({item}: any) => (
-    <View style={styles.cartItem}>
+    <View style={styles.cartItem}
+    accessible
+     >
       <View style={styles.flexDirectionRow}>
         <Image source={{uri: item.image}} style={styles.itemImage} />
         <View style={styles.itemDetails}>
@@ -91,16 +93,22 @@ export const Cart = () => {
           <Text style={styles.itemPrice}>{`₹${item?.price}`}</Text>
 
           <View style={styles.quantityContainer}>
-            <Pressable onPress={() => updateQuantity(item?.id, 'decrease')}>
+            <Pressable 
+            accessibilityLabel="Decrease quantity"
+            accessibilityRole="button"
+            onPress={() => updateQuantity(item?.id, 'decrease')}>
               <Text style={styles.quantityButton}>-</Text>
             </Pressable>
             <Text style={styles.quantity}>{item?.quantity || '1'}</Text>
-            <Pressable onPress={() => updateQuantity(item?.id, 'increase')}>
+            <Pressable  accessibilityLabel="Increase quantity"
+              accessibilityRole="button" onPress={() => updateQuantity(item?.id, 'increase')}>
               <Text style={styles.quantityButton}>+</Text>
             </Pressable>
           </View>
         </View>
         <Pressable
+        accessibilityRole="button"
+        accessibilityLabel={`Remove ${item?.title} from cart`}
           style={styles.removeButton}
           onPress={() => removeItem(item.id)}>
           <Text style={styles.removeButtonText}>Remove</Text>
@@ -117,7 +125,7 @@ export const Cart = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View accessible style={styles.container}>
       <Header
         BackIconAvailable={true}
         CartIconAvailable={false}
@@ -137,7 +145,7 @@ export const Cart = () => {
         )}
       </View>
       {cartItems?.length ? (
-        <Pressable style={styles.checkoutButton} onPress={handleCheckout}>
+        <Pressable accessibilityRole={'button'} accessibilityLabel={'Checkout'} style={styles.checkoutButton} onPress={handleCheckout}>
           <Text style={styles.checkoutButtonText}>Checkout</Text>
         </Pressable>
       ) : null}

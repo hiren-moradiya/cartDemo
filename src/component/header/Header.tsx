@@ -21,13 +21,13 @@ export const Header = (props: HeaderProps) => {
   return (
     <View style={styles.container}>
       {BackIconAvailable ? (
-        <Pressable style={styles.iconWrapper} onPress={onPressBack}>
+        <Pressable accessibilityLabel={'Back icon'} accessibilityRole={'button'} style={styles.iconWrapper} onPress={onPressBack}>
           <Image source={IMAGE.back} resizeMode="contain" style={styles.icon} />
         </Pressable>
       ) : null}
       <Text style={styles.title}>{title}</Text>
       {CartIconAvailable ? (
-        <Pressable style={styles.iconWrapper} onPress={onPressCart}>
+        <Pressable accessibilityLabel={'Cart icon'} accessibilityRole={'button'} style={styles.iconWrapper} onPress={onPressCart}>
           <Image source={IMAGE.cart} resizeMode="contain" style={styles.icon} />
         </Pressable>
       ) : null}

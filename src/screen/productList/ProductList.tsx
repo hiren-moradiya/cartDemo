@@ -68,7 +68,7 @@ export const ProductList = () => {
 
   const renderItem = ({item}: {item: any}) => {
     return (
-      <View style={styles.productCard}>
+      <View style={styles.productCard} accessible>
         <Image
           source={{uri: item?.image}}
           resizeMode="contain"
@@ -78,6 +78,8 @@ export const ProductList = () => {
           <Text style={styles.productTitle}>{item?.title}</Text>
           <Text style={styles.productPrice}>{`₹${item?.price}`}</Text>
           <Pressable
+          accessibilityLabel={'Add to cart'}
+          accessibilityRole={'button'}
             style={styles.addToCartButton}
             onPress={() => addToCart(item)}>
             <Text style={styles.addToCartText}>{'Add to cart'}</Text>
@@ -100,7 +102,7 @@ export const ProductList = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} accessible>
       <Header
         BackIconAvailable={false}
         CartIconAvailable={true}
